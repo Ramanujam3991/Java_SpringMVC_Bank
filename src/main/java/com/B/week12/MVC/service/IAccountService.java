@@ -10,7 +10,6 @@ public interface IAccountService {
 	Account getAccountDetails(Account account);
 
 	Transaction getTransactionDetails(Transaction transaction);
-	Transaction getTransactionDetails(HashMap<String, String> dataMap);
 	
 	void processForexTransaction(Account account, double amount, String toCurrency);
 
