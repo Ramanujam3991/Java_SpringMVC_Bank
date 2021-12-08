@@ -26,7 +26,7 @@
         <a class="nav-link" href="#">Withdraw</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Forex Transactions</a>
+        <a class="nav-link" href="/LambtonBank/forex">Forex Transactions</a>
       </li>
      
      
