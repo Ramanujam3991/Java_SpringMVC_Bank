@@ -64,6 +64,8 @@ public class AccountController {
 	 @RequestMapping(value = "/forex", method = RequestMethod.GET)
 	 public ModelAndView showForex(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 	   ModelAndView mav = new ModelAndView("forex");  
+	   ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
+		if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
 	   User user = (User) session.getAttribute("userObject");
 	   System.out.println("forex method | " + user.getUserId());
 	   return mav;
@@ -71,13 +73,15 @@ public class AccountController {
 	 
 	 @RequestMapping(value = "/forexProcess", method = RequestMethod.POST)
 	 public ModelAndView forexForm(HttpSession session,HttpServletRequest request, HttpServletResponse response) {   
+	   ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
+	   if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
 	   ModelAndView mav = null;
 	   User user = (User) session.getAttribute("userObject");
 	   System.out.println("forexProcess method | " + user.getUserId());
-	   HashMap dataMap = new HashMap();
-	   dataMap.put("accountType", "checking");
-	   dataMap.put("userId", user.getUserId());
-	   Account account =  iAccountService.getAccountDetails(dataMap);
+	   Account account = new Account();
+		account.setUser(user);
+		account.setAccountType("checking");
+		account = iAccountService.getAccountDetails(account);
 	   System.out.println(request.getParameter("from_currency"));
 	   System.out.println(request.getParameter("to_currency"));
 	   double test_from_currency = Double.parseDouble(request.getParameter("from_currency"));
