@@ -6,10 +6,10 @@
 <head>
 <jsp:include page="header.jsp" />
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Lambton Bank</title>
 </head>
 <body>
-	<h1>Account Number:${accountId}</h1>
+	<h1>${transaction.fromAccount.accountType } account - ${transaction.fromAccount.accountId} details:</h1>
 	<div style="border: thick solid black;">
 	<ul class="list-group">
 		<li class="list-group-item">Account Number: ${transaction.fromAccount.accountId}</li>

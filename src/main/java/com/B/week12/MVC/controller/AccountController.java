@@ -42,18 +42,18 @@ public class AccountController {
 		ModelAndView mav = new ModelAndView("viewaccount");
 		LOGGER.info("Fetching Account Details in account controller and viewing:" + accountType);
 		User user = (User) session.getAttribute("userObject");
-		
-		HashMap dataMap = new HashMap();
-		dataMap.put("accountType", accountType);
-		dataMap.put("userId", user.getUserId());
-		Account account = iAccountService.getAccountDetails(dataMap);
-		dataMap.put("account", account);
-		Transaction transaction = iAccountService.getTransactionDetails(dataMap);
-		transaction.setFromAccount(account);
+		Account account = new Account();
+		account.setUser(user);
+		account.setAccountType(accountType);
+		Account fromAccount = iAccountService.getAccountDetails(account);
+		Transaction transaction = new Transaction();
+		transaction.setFromAccount(fromAccount);
+		Transaction recentTransaction = iAccountService.getTransactionDetails(transaction);
+		recentTransaction.setFromAccount(fromAccount);
 		LOGGER.info("account:" + account);
-		LOGGER.info("transaction:" + transaction);
+		LOGGER.info("transaction:" + recentTransaction);
 		// mav.addObject("account", account);
-		mav.addObject("transaction", transaction);
+		mav.addObject("transaction", recentTransaction);
 
 		return mav;
 	}

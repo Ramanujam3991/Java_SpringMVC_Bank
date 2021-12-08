@@ -7,8 +7,8 @@ import com.B.week12.MVC.model.Transaction;
 
 public interface IAccountService {
 
-	Account getAccountDetails(HashMap<String, String> dataMap);
+	Account getAccountDetails(Account account);
 
-	Transaction getTransactionDetails(HashMap<String, String> dataMap);
+	Transaction getTransactionDetails(Transaction transaction);
 
 }

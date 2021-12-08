@@ -13,13 +13,13 @@ public class AccountService implements IAccountService{
 	@Autowired
 	  public IAccountDao iAccountDao;
 
-	public Account getAccountDetails(HashMap<String, String> dataMap) {
+	public Account getAccountDetails(Account account) {
 		// TODO Auto-generated method stub
-		return iAccountDao.getAccountDetails(dataMap);
+		return iAccountDao.getAccountDetails(account);
 	}
 
-	public Transaction getTransactionDetails(HashMap<String, String> dataMap) {
+	public Transaction getTransactionDetails(Transaction transaction) {
 		// TODO Auto-generated method stub
-		return iAccountDao.getTransactionDetails(dataMap);
+		return iAccountDao.getTransactionDetails(transaction);
 	}
 }

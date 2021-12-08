@@ -22,21 +22,21 @@ public class AccountDao implements IAccountDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	public Account getAccountDetails(HashMap dataMap) {
-		String sql = "select * from account where user_id='" + dataMap.get("userId") + "' and account_type='"
-				+ dataMap.get("accountType") + "'";
+	public Account getAccountDetails(Account account) {
+		String sql = "select * from account where user_id='" + account.getUser().getUserId() + "' and account_type='"
+				+ account.getAccountType() + "'";
 		System.out.println("SQL:" + sql);
-		List<Account> account = jdbcTemplate.query(sql, new AccountUserMapper());
+		List<Account> fromAccounts = jdbcTemplate.query(sql, new AccountUserMapper());
 
-		return account.size() > 0 ? account.get(0) : null;
+		return fromAccounts.size() > 0 ? fromAccounts.get(0) : null;
 	}
-	public Transaction getTransactionDetails(HashMap dataMap) {
+	public Transaction getTransactionDetails(Transaction transaction) {
 		// TODO Auto-generated method stub
-		String sql = "select * from transaction where account_id='" + ((Account) dataMap.get("account")).getAccountId() + "' ";
+		String sql = "select * from transaction where account_id='" + transaction.getFromAccount().getAccountId() + "' ";
 		System.out.println("SQL:" + sql);
-		List<Transaction> transaction = jdbcTemplate.query(sql, new TransactionUserMapper());
+		List<Transaction> recentTransactions = jdbcTemplate.query(sql, new TransactionUserMapper());
 
-		return transaction.size() > 0 ? transaction.get(0) : null;
+		return recentTransactions.size() > 0 ? recentTransactions.get(0) : null;
 	}
 
 	class AccountUserMapper implements RowMapper<Account> {

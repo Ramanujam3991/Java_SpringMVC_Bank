@@ -29,9 +29,13 @@
         <a class="nav-link" href="#">Forex Transactions</a>
       </li>
      
-      
+     
       
     </ul>
-    <span style="width:30%;text-align:right"> <a class="nav-link" href="logout">Logout</a></span>
+    <span style="width:30%;text-align:right"><c:if test="${session.getAttribute("fullname") != null}">
+											   Hello <%=session.getAttribute("fullname")%> 
+											</c:if>
+  											</span>
+    <span style="width:5%;text-align:right"><a class="nav-link" href="/LambtonBank/logout">Logout</a></span>
   </div>
 </nav>
