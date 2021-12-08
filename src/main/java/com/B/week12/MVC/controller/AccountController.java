@@ -20,6 +20,7 @@ import com.B.week12.MVC.model.Login;
 import com.B.week12.MVC.model.Transaction;
 import com.B.week12.MVC.model.User;
 import com.B.week12.MVC.service.IAccountService;
+import com.B.week12.MVC.service.IForexService;
 import com.B.week12.MVC.service.ISpringSessionValidator;
 
 
@@ -31,6 +32,8 @@ public class AccountController {
 	@Autowired
 	IAccountService iAccountService;
 	
+	 @Autowired
+	 IForexService iForexService;
 
 	@RequestMapping(value = "/accountDetails/{accountType}", method = RequestMethod.GET)
 	public ModelAndView viewAccount(@PathVariable String accountType, HttpSession session, HttpServletRequest request,
@@ -57,4 +60,44 @@ public class AccountController {
 
 		return mav;
 	}
+	
+	 @RequestMapping(value = "/forex", method = RequestMethod.GET)
+	 public ModelAndView showForex(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	   ModelAndView mav = new ModelAndView("forex");  
+	   User user = (User) session.getAttribute("userObject");
+	   System.out.println("forex method | " + user.getUserId());
+	   return mav;
+	 }
+	 
+	 @RequestMapping(value = "/forexProcess", method = RequestMethod.POST)
+	 public ModelAndView forexForm(HttpSession session,HttpServletRequest request, HttpServletResponse response) {   
+	   ModelAndView mav = null;
+	   User user = (User) session.getAttribute("userObject");
+	   System.out.println("forexProcess method | " + user.getUserId());
+	   HashMap dataMap = new HashMap();
+	   dataMap.put("accountType", "checking");
+	   dataMap.put("userId", user.getUserId());
+	   Account account =  iAccountService.getAccountDetails(dataMap);
+	   System.out.println(request.getParameter("from_currency"));
+	   System.out.println(request.getParameter("to_currency"));
+	   double test_from_currency = Double.parseDouble(request.getParameter("from_currency"));
+	   String to_currency = request.getParameter("to_currency");
+	   System.out.println("to currency is | "+to_currency);
+	   double forex_amount=0;
+	   
+	   if(test_from_currency > account.getCurrentBalance()) {
+		   System.out.println("Insufficient account balance");
+		   mav = new ModelAndView("forex_error");
+	   }
+	   else {
+		   //double amount = account.getCurrentBalance() - test_from_currency;
+		   //double account_balance = account.getCurrentBalance();
+		   iAccountService.processForexTransaction(account,test_from_currency,to_currency);
+		   iForexService.forexTransaction(account,test_from_currency);
+		   System.out.println(test_from_currency);
+		   mav = new ModelAndView("forex_success");
+		   mav.addObject("forex_amount", forex_amount);
+	   }   
+	   return mav;
+	 }
 }
