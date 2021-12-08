@@ -38,6 +38,22 @@ public class AccountDao implements IAccountDao {
 
 		return transaction.size() > 0 ? transaction.get(0) : null;
 	}
+	
+	@Override
+	public void processForexTransaction(Account account, double amount) {
+		// TODO Auto-generated method stub
+
+		String sql = "update account set current_balance = ? where account_id=? ";
+		System.out.println("procesForexTransation method inside AccountDao | " + account.getAccountId());
+		System.out.println(sql);
+
+		int status = jdbcTemplate.update(sql, amount, account.getAccountId());
+		if (status != 0) {
+			System.out.println("Forex transaction success ");
+		} else {
+			System.out.println("Forex transaction failed ");
+		}
+	}
 
 	class AccountUserMapper implements RowMapper<Account> {
 

@@ -10,5 +10,6 @@ public interface IAccountDao {
 	Account getAccountDetails(HashMap<String, String> dataMap);
 
 	Transaction getTransactionDetails(HashMap<String, String> dataMap);
-
+		
+	void processForexTransaction(Account account, double amount);
 }
