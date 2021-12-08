@@ -1,6 +1,7 @@
 package com.B.week12.MVC.controller;
 
 import java.util.HashMap;
+import java.util.function.Function;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,31 +20,41 @@ import com.B.week12.MVC.model.Login;
 import com.B.week12.MVC.model.Transaction;
 import com.B.week12.MVC.model.User;
 import com.B.week12.MVC.service.IAccountService;
+import com.B.week12.MVC.service.ISpringSessionValidator;
+
+
 
 @Controller
 public class AccountController {
-private static final Logger LOGGER = Logger.getLogger(AccountController.class);
+	private static final Logger LOGGER = Logger.getLogger(AccountController.class);
 
- @Autowired
- IAccountService iAccountService;
- 
- @RequestMapping(value = "/accountDetails/{accountType}", method = RequestMethod.GET)
- public ModelAndView viewAccount(@PathVariable String accountType, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-   ModelAndView mav = new ModelAndView("viewaccount");
-   LOGGER.info("Fetching Account Details in account controller and viewing:"+accountType);
-   User user = (User) session.getAttribute("userObject");
-   HashMap dataMap = new HashMap();
-   dataMap.put("accountType", accountType);
-   dataMap.put("userId", user.getUserId());
-   Account account =  iAccountService.getAccountDetails(dataMap);
-   dataMap.put("account", account);
-   Transaction transaction =  iAccountService.getTransactionDetails(dataMap);
-   transaction.setFromAccount(account);
-   LOGGER.info("account:"+account);
-   LOGGER.info("transaction:"+transaction);
-   //mav.addObject("account", account);
-   mav.addObject("transaction", transaction);
+	@Autowired
+	IAccountService iAccountService;
+	
 
-   return mav;
- }
+	@RequestMapping(value = "/accountDetails/{accountType}", method = RequestMethod.GET)
+	public ModelAndView viewAccount(@PathVariable String accountType, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
+		if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
+
+		ModelAndView mav = new ModelAndView("viewaccount");
+		LOGGER.info("Fetching Account Details in account controller and viewing:" + accountType);
+		User user = (User) session.getAttribute("userObject");
+		
+		HashMap dataMap = new HashMap();
+		dataMap.put("accountType", accountType);
+		dataMap.put("userId", user.getUserId());
+		Account account = iAccountService.getAccountDetails(dataMap);
+		dataMap.put("account", account);
+		Transaction transaction = iAccountService.getTransactionDetails(dataMap);
+		transaction.setFromAccount(account);
+		LOGGER.info("account:" + account);
+		LOGGER.info("transaction:" + transaction);
+		// mav.addObject("account", account);
+		mav.addObject("transaction", transaction);
+
+		return mav;
+	}
 }
