@@ -24,7 +24,7 @@ public class LoginController {
 
 
   @RequestMapping(value = "/login", method = RequestMethod.GET)
-  public ModelAndView showLogin(HttpServletRequest request, HttpServletResponse response) {
+  public ModelAndView showLogin(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
     ModelAndView mav = new ModelAndView("login");
     System.out.println("comes here");
     mav.addObject("login", new Login());
@@ -47,7 +47,7 @@ public class LoginController {
 
 
   @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-  public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
+  public ModelAndView loginProcess(HttpSession session, HttpServletRequest request, HttpServletResponse response,
       @ModelAttribute("login") Login login) {
     ModelAndView mav = null;
 
@@ -56,10 +56,8 @@ public class LoginController {
     if (null != user) {
       mav = new ModelAndView("redirect:/viewallreservation");
       mav.addObject("firstname", user.getFirstname());
-      HttpSession session = request.getSession();
-      session.setAttribute("username", user.getUsername());
-      session.setAttribute("firstname", user.getFirstname());
-      session.setAttribute("lastname", user.getLastname());
+      session = request.getSession();
+      session.setAttribute("userObject", user);
     } else {
       mav = new ModelAndView("redirect:/login");
       mav.addObject("message", "Username or Password is wrong!!");

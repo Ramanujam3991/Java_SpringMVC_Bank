@@ -37,5 +37,10 @@ public class Account {
 	public void setUser(User user) {
 		this.user = user;
 	}
+	@Override
+	public String toString() {
+		return "Account [accountId=" + accountId + ", accountStatus=" + accountStatus + ", accountType=" + accountType
+				+ ", currentBalance=" + currentBalance + ", user=" + user + "]";
+	}
 
 }

@@ -1,6 +1,7 @@
 package com.B.week12.MVC.model;
 
 public class User {
+	private int userId;
 	private String username;
 	private String password;
 	private String firstname;
@@ -8,6 +9,7 @@ public class User {
 	private String email;
 	private String address;
 	private String phone;
+	private Branch branch;
 
 	public String getPassword() {
 		return password;
@@ -65,16 +67,28 @@ public class User {
 		this.username = username;
 	}
 
+
+	public Branch getBranch() {
+		return branch;
+	}
+
+	public void setBranch(Branch branch) {
+		this.branch = branch;
+	}
+
 	@Override
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + ", firstname=" + firstname + ", lastname="
 				+ lastname + ", email=" + email + ", address=" + address + ", phone=" + phone + "]";
 	}
 
+	public int getUserId() {
+		return userId;
+	}
 
-
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 
 	
-	
-
 }

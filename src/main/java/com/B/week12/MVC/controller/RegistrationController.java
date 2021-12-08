@@ -29,7 +29,7 @@ public class RegistrationController {
 	  public ModelAndView showRegister(HttpServletRequest request, HttpServletResponse response, Model m) {
 		  System.out.println("comes to register page");
 	    ModelAndView mav = new ModelAndView("register");
-	
+	    
 	    mav.addObject("account", new Account());
 	    return mav;
 	  }

@@ -37,6 +37,9 @@
     
  <bean id="iUserService" class="com.B.week12.MVC.service.UserService" />
  <bean id="iUserDao" class="com.B.week12.MVC.dao.UserDao" />
+ 
+  <bean id="iAccountService" class="com.B.week12.MVC.service.AccountService" />
+ <bean id="iAccountDao" class="com.B.week12.MVC.dao.AccountDao" />
 <!--  
 <bean id="constants" class="com.B.week12.MVC.model.Constants"/> -->
 
