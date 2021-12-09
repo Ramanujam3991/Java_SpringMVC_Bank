@@ -20,7 +20,7 @@ import com.B.week12.MVC.model.Login;
 import com.B.week12.MVC.model.Transaction;
 import com.B.week12.MVC.model.User;
 import com.B.week12.MVC.service.IAccountService;
-import com.B.week12.MVC.service.IForexService;
+import com.B.week12.MVC.service.ITransactionService;
 import com.B.week12.MVC.service.ISpringSessionValidator;
 
 
@@ -33,7 +33,7 @@ public class AccountController {
 	IAccountService iAccountService;
 	
 	 @Autowired
-	 IForexService iForexService;
+	 ITransactionService iTransactionService;
 
 	@RequestMapping(value = "/accountDetails/{accountType}", method = RequestMethod.GET)
 	public ModelAndView viewAccount(@PathVariable String accountType, HttpSession session, HttpServletRequest request,
@@ -52,7 +52,12 @@ public class AccountController {
 		Transaction transaction = new Transaction();
 		transaction.setFromAccount(fromAccount);
 		Transaction recentTransaction = iAccountService.getTransactionDetails(transaction);
-		recentTransaction.setFromAccount(fromAccount);
+		if(recentTransaction!=null)
+			recentTransaction.setFromAccount(fromAccount);
+		else {
+			recentTransaction= new Transaction();;
+			recentTransaction.setFromAccount(fromAccount);
+		}
 		LOGGER.info("account:" + account);
 		LOGGER.info("transaction:" + recentTransaction);
 		// mav.addObject("account", account);
@@ -77,7 +82,6 @@ public class AccountController {
 	   if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
 	   ModelAndView mav = null;
 	   User user = (User) session.getAttribute("userObject");
-	   System.out.println("forexProcess method | " + user.getUserId());
 	   Account account = new Account();
 		account.setUser(user);
 		account.setAccountType("checking");
@@ -97,7 +101,7 @@ public class AccountController {
 		   //double amount = account.getCurrentBalance() - test_from_currency;
 		   //double account_balance = account.getCurrentBalance();
 		   iAccountService.processForexTransaction(account,test_from_currency,to_currency);
-		   iForexService.forexTransaction(account,test_from_currency);
+		   iTransactionService.forexTransaction(account,test_from_currency);
 		   System.out.println(test_from_currency);
 		   mav = new ModelAndView("forex_success");
 		   mav.addObject("forex_amount", forex_amount);

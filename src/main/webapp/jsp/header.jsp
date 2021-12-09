@@ -20,7 +20,7 @@
         <a class="nav-link" href="#">Pay Bills</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Deposit</a>
+        <a class="nav-link" href="/LambtonBank/depositMoney">Deposit</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Withdraw</a>

@@ -54,7 +54,7 @@ public class AccountService implements IAccountService{
 	public void processForexTransaction(Account account, double amount, String toCurrency) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("I am inside getConvertedRate of ForexService class");
+		System.out.println("I am inside getConvertedRate of TransactionService class");
 		HttpGet get = new HttpGet(BASE_URL + ENDPOINT + "?access_key=" + ACCESS_KEY + "&from=CAD&toINR&amount=10");
 		double converted_amount = 0;
 		double update_account_bal = account.getCurrentBalance() - amount;

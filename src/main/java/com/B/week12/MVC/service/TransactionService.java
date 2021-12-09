@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -24,7 +25,7 @@ import com.B.week12.MVC.dao.ITransationDao;
 import com.B.week12.MVC.model.Account;
 import com.B.week12.MVC.model.Transaction;
 
-public class ForexService implements IForexService{
+public class TransactionService implements ITransactionService{
 	
 	@Autowired
 	  public ITransationDao iTransactionDao;
@@ -33,5 +34,19 @@ public class ForexService implements IForexService{
 	public int forexTransaction(Account account, double amount) {
 		// TODO Auto-generated method stub
 		return iTransactionDao.forexTransaction(account, amount);
+	}
+
+
+	@Override
+	public List<Account> getAccounts(int userId) {
+		// TODO Auto-generated method stub
+		return iTransactionDao.getAccounts(userId);
+	}
+
+
+	@Override
+	public void depositMoney(Transaction transaction) {
+		// TODO Auto-generated method stub
+		iTransactionDao.depositMoney(transaction);
 	}
 }
