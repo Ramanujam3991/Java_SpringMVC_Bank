@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -9,13 +10,13 @@
 <title>Lambton Bank</title>
 </head>
 <body>
-	<h1>${transaction.fromAccount.accountType } account - ${transaction.fromAccount.accountId} details:</h1>
+	<h1>${fromAccount.accountType } account - ${fromAccount.accountId} details:</h1>
 	<div style="border: thick solid black;">
 	<ul class="list-group">
-		<li class="list-group-item">Account Number: ${transaction.fromAccount.accountId}</li>
-		<li class="list-group-item">Account Status: ${transaction.fromAccount.accountStatus }</li>
-		<li class="list-group-item">Account Type: ${transaction.fromAccount.accountType }</li>
-		<li class="list-group-item">Account Balance: ${transaction.fromAccount.currentBalance}</li>
+		<li class="list-group-item">Account Number: ${fromAccount.accountId}</li>
+		<li class="list-group-item">Account Status: ${fromAccount.accountStatus }</li>
+		<li class="list-group-item">Account Type: ${fromAccount.accountType }</li>
+		<li class="list-group-item">Account Balance: ${fromAccount.currentBalance}</li>
 	</ul>
 	</div>
 	<h1>Recent Transactions</h1>
@@ -30,13 +31,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+		<c:forEach items="${transaction }" var="transaction">
+		<tr>
 				<td>${transaction.transactionId}</td>
 				<td>${transaction.transactionType}</td>
 				<td>${transaction.transactionDate}</td>
 				<td>${transaction.comments}</td>
 				<td>${transaction.transactionAmount}</td>
 			</tr>
+		</c:forEach>
+			
 		</tbody>
 	</table>
 </body>

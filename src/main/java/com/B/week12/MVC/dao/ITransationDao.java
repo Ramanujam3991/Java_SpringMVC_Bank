@@ -13,6 +13,8 @@ int forexTransaction(Account account, double amount);
 List<Account> getAccounts(int userId);
 
 void depositMoney(Transaction transaction);
+
+void withdrawMoney(Transaction transaction);
 	
 
 }

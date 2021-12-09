@@ -49,4 +49,9 @@ public class TransactionService implements ITransactionService{
 		// TODO Auto-generated method stub
 		iTransactionDao.depositMoney(transaction);
 	}
+	@Override
+	public void withdrawMoney(Transaction transaction) {
+		// TODO Auto-generated method stub
+		iTransactionDao.withdrawMoney(transaction);
+	}
 }

@@ -47,11 +47,36 @@ public class TransactionController {
 	public ModelAndView depositMoneySave(HttpSession session, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("transaction") Transaction transaction) {
 		ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
 		if (!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
-		User user =(User)session.getAttribute("userObject");
 		
 		
 		LOGGER.info("transaction:::::"+transaction);
 		iTransactionService.depositMoney(transaction);
+
+		return new ModelAndView("redirect:/depositMoney");
+	}
+	
+	@RequestMapping(value = "/withdrawMoney", method = RequestMethod.GET)
+	public ModelAndView withdrawMoney(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
+		if (!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
+		User user =(User)session.getAttribute("userObject");
+		List<Account> accountLst =  iTransactionService.getAccounts(user.getUserId());
+		
+		ModelAndView mav = new ModelAndView("withdrawMoney");
+		LOGGER.info("accountLst:::::"+accountLst.get(0));
+		mav.addObject("accountLst", accountLst);
+		mav.addObject("transaction", new Transaction());
+
+		return mav;
+	}
+	
+	@RequestMapping(value = "/withdrawMoney", method = RequestMethod.POST)
+	public ModelAndView withdrawMoneySave(HttpSession session, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("transaction") Transaction transaction) {
+		ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
+		if (!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
+		
+		LOGGER.info("transaction:::::"+transaction);
+		iTransactionService.withdrawMoney(transaction);
 
 		return new ModelAndView("redirect:/depositMoney");
 	}

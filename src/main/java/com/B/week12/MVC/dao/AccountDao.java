@@ -30,13 +30,13 @@ public class AccountDao implements IAccountDao {
 
 		return fromAccounts.size() > 0 ? fromAccounts.get(0) : null;
 	}
-	public Transaction getTransactionDetails(Transaction transaction) {
+	public List<Transaction> getTransactionDetails(Transaction transaction) {
 		// TODO Auto-generated method stub
-		String sql = "select * from transaction where account_id='" + transaction.getFromAccount().getAccountId() + "' ";
+		String sql = "select * from transaction where account_id='" + transaction.getFromAccount().getAccountId() + "' order by transaction_id desc";
 		System.out.println("SQL:" + sql);
 		List<Transaction> recentTransactions = jdbcTemplate.query(sql, new TransactionUserMapper());
 
-		return recentTransactions.size() > 0 ? recentTransactions.get(0) : null;
+		return recentTransactions.size() > 0 ? recentTransactions : null;
 	}
 	
 	@Override

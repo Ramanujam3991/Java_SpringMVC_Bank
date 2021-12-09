@@ -1,6 +1,7 @@
 package com.B.week12.MVC.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.function.Function;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,15 +50,11 @@ public class AccountController {
 		account.setUser(user);
 		account.setAccountType(accountType);
 		Account fromAccount = iAccountService.getAccountDetails(account);
+		mav.addObject("fromAccount", fromAccount);
 		Transaction transaction = new Transaction();
 		transaction.setFromAccount(fromAccount);
-		Transaction recentTransaction = iAccountService.getTransactionDetails(transaction);
-		if(recentTransaction!=null)
-			recentTransaction.setFromAccount(fromAccount);
-		else {
-			recentTransaction= new Transaction();;
-			recentTransaction.setFromAccount(fromAccount);
-		}
+		List<Transaction> recentTransaction = iAccountService.getTransactionDetails(transaction);
+
 		LOGGER.info("account:" + account);
 		LOGGER.info("transaction:" + recentTransaction);
 		// mav.addObject("account", account);

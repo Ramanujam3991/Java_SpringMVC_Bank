@@ -11,5 +11,8 @@ public interface ITransactionService {
 	public List<Account> getAccounts(int userId);
 
 	public void depositMoney(Transaction transaction);
+	public void withdrawMoney(Transaction transaction);
+
 }
+
 

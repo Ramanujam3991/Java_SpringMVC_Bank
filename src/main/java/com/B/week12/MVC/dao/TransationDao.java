@@ -91,6 +91,29 @@ public class TransationDao implements ITransationDao {
 		
 	}
 	
+	@Override
+	public void withdrawMoney(Transaction transaction) {
+		// TODO Auto-generated method stub
+		String sql = "update account set current_balance = (current_balance-?) where account_id=? ";
+		int status = jdbcTemplate.update(sql, new Object[] {transaction.getTransactionAmount(), transaction.getFromAccount().getAccountId()});
+		
+		if (status != 0) {
+			LOGGER.info("Withdraw success");
+		} else {
+			LOGGER.info("Withdraw failed");
+		}
+		
+		sql = "insert into transaction(account_id, transaction_type, transaction_amount, comments, transaction_date) value(?,'withdraw', ?, ?, SYSDATE())";
+		status = jdbcTemplate.update(sql, new Object[] {transaction.getFromAccount().getAccountId(), transaction.getTransactionAmount(), transaction.getComments()});
+		
+		if (status != 0) {
+			LOGGER.info("Transaction success");
+		} else {
+			LOGGER.info("Transaction failed");
+		}
+		
+	}
+	
 
 
 }

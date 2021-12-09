@@ -23,7 +23,7 @@
         <a class="nav-link" href="/LambtonBank/depositMoney">Deposit</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Withdraw</a>
+        <a class="nav-link" href="/LambtonBank/withdrawMoney">Withdraw</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/LambtonBank/forex">Forex Transactions</a>
