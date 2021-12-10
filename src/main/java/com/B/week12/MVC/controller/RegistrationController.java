@@ -1,6 +1,7 @@
 package com.B.week12.MVC.controller;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -69,6 +70,7 @@ public class RegistrationController {
 
 		User user = (User) session.getAttribute("userObject");
 		List<Account> accountLst = iTransactionService.getAccounts(user.getUserId());
+		Predicate<Account> exists = acc->acc.getAccountType()
 
 		iUserService.register(account);
 		ModelAndView mav = new ModelAndView("registerconfirmation");
