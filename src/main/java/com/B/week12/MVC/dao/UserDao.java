@@ -48,6 +48,14 @@ public class UserDao implements IUserDao {
 		return users.size() > 0 ? users.get(0) : null;
 	}
 
+	@Override
+	public void createAccount(Account account) {
+		String sql = "insert into account(user_id, account_type) values(?,?)";
+
+		 jdbcTemplate.update(sql, new Object[] { account.getUser().getUserId(), account.getAccountType() });
+		
+	}
+
 }
 
 class UserMapper implements RowMapper<User> {

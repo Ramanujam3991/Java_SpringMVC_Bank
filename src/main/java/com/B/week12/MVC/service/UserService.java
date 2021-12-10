@@ -9,14 +9,21 @@ public class UserService implements IUserService {
 
 	  @Autowired
 	  public IUserDao iUserDao;
-
+	  @Override
 	  public int register(Account account) {
 	    return iUserDao.register(account);
 	  }
-
+	  @Override
 	  public User validateUser(Login login) {
 	    return iUserDao.validateUser(login);
 	  }
+
+	@Override
+	public void createAccount(Account account) {
+		// TODO Auto-generated method stub
+		iUserDao.createAccount(account);
+		
+	}
 
 
 	}

@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
+<jsp:include page="header.jsp" />
 <head>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -23,7 +25,7 @@
 </head>
 <body>
 	
-	<h1>There is no sufficient balance for this transaction</h1>
+	<h1 style="color:red">${message}</h1>
 	
 </body>
 </html>

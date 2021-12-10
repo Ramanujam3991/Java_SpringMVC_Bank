@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 align="center">Withdraw Money</h1>
+		<h1 align="center">Transfer Money</h1>
 	</div>
 	<h1>Successfully Transfered!</h1>
 </body>

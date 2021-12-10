@@ -52,7 +52,7 @@ public class TransactionController {
 		LOGGER.info("transaction:::::"+transaction);
 		iTransactionService.depositMoney(transaction);
 
-		return new ModelAndView("redirect:/depositMoney");
+		return new ModelAndView("redirect:/Dashboard");
 	}
 	
 	@RequestMapping(value = "/withdrawMoney", method = RequestMethod.GET)
@@ -110,6 +110,7 @@ public class TransactionController {
 			
 			ModelAndView mav = new ModelAndView("transferMoney");
 			LOGGER.info("accountLst:::::"+accountLst.get(0));
+			mav.addObject("message","Error: Invalid To Account Number");
 			mav.addObject("accountLst", accountLst);
 			mav.addObject("transaction", transaction);
 
@@ -117,7 +118,7 @@ public class TransactionController {
 		}
 		iTransactionService.transferMoney(transaction);
 
-		return new ModelAndView("redirect:/transferMoneyConfirmation");
+		return new ModelAndView("transferMoneyConfirmation");
 	}
 
 }

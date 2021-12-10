@@ -70,11 +70,19 @@ public class RegistrationController {
 
 		User user = (User) session.getAttribute("userObject");
 		List<Account> accountLst = iTransactionService.getAccounts(user.getUserId());
-		Predicate<Account> exists = acc->acc.getAccountType()
+		boolean accountExist = accountLst.stream().filter(acc->acc.getAccountType().equals(account.getAccountType())).findFirst().isPresent(); 
+		if(accountExist)
+		{
+			ModelAndView mav = new ModelAndView("addAccount");
 
-		iUserService.register(account);
-		ModelAndView mav = new ModelAndView("registerconfirmation");
-		mav.addObject("SUCCESSFUL_REGISTRATION_MSG", Constants.SUCCESSFUL_REGISTRATION_MSG);
+			mav.addObject("account", account);
+			mav.addObject("message","Error: Account Type already exists, please choose account type other than \""+account.getAccountType()+"\"");
+			return mav;
+		}
+		account.setUser(user);
+		iUserService.createAccount(account);
+		ModelAndView mav = new ModelAndView("transferMoneyConfirmation");
+		mav.addObject("SUCCESSFUL_REGISTRATION_MSG", Constants.SUCCESSFUL_ACCOUNT_CREATION_MSG);
 		return mav;
 	}
 

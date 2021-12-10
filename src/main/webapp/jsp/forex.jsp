@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +25,8 @@
 <body>
 	<div align="center"></div>
 	<h1>Forex transaction</h1>
+	<p>Note: Please make sure that your checking account has sufficient balance</p>
+	<p>Current checking balance available: ${balance} USD</p>
 	<form action="forexProcess" method="post">
 		<table style="with: 80%">
 			<tr>

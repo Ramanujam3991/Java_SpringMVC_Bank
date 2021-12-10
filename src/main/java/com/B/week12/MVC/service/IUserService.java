@@ -6,7 +6,9 @@ import com.B.week12.MVC.model.User;
 
 public interface IUserService {
 
-	  int register(Account account);
+	int register(Account account);
 
-	  User validateUser(Login login);
+	User validateUser(Login login);
+
+	void createAccount(Account account);
 }

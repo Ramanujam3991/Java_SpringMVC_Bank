@@ -9,4 +9,6 @@ public interface IUserDao {
 	int register(Account account);
 
 	User validateUser(Login login);
+
+	void createAccount(Account account);
 }

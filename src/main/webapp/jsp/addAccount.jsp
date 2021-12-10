@@ -11,6 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<jsp:include page="header.jsp" />
 <title>Lambton College</title>
 
 </head>
@@ -22,15 +23,19 @@
 		method="post">
 
 		<table align="center">
-			
+			<tr>
+			<td></td>
+			<td><span style="color:red">${message}</span></td>
+			</tr>
 			<tr>
 				<td><form:label path="accountType">Account Type</form:label></td>
 				<td><form:select class="form-control" path="accountType"
 						name="accountType" id="accountType">
 						<form:option value="checking">Checking</form:option>
 						<form:option value="saving">Saving</form:option>
-						<form:option value="saving">GIC</form:option>
+						<form:option value="gic">GIC</form:option>
 					</form:select></td>
+					
 			</tr>
 			<tr>
 				<td></td>

@@ -1,5 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +28,9 @@
 	<h1>Transfer Funds</h1>
 	<form action="forexProcess" method="post">
 		<table style="with: 80%">
+		<tr>
+		<td></td><td style="color:red">${message }</td>
+		</tr>
 			<tr>
 				<td>Receiving Account ID:</td>
 				<td><input type="text" class="form-control" name="accout2_id" /></td>

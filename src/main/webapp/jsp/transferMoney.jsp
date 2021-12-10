@@ -25,7 +25,7 @@
 							<form:option value="${acc.accountId}">Account Id: ${acc.accountId} | Type: ${acc.accountType} | Balance: ${acc.currentBalance}</form:option>
 						</c:forEach>
 
-					</form:select></td>
+					</form:select> <span style="color:red">${message}</span></td>
 			</tr>
 			<tr>
 				<td><form:label path="toAccount.accountId">To Account Number</form:label></td>

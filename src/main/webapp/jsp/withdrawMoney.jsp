@@ -12,6 +12,7 @@
 <body>
 	<div class="container">
 		<h1 align="center">Withdraw Money</h1>
+		<p>Note: Go to the nearest branch and collect the amount after creating a request below</p>
 	</div>
 	<form:form id="regForm" modelAttribute="transaction"
 		action="withdrawMoney" method="post">

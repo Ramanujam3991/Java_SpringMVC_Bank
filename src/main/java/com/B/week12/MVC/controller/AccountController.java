@@ -74,9 +74,13 @@ public class AccountController {
 	   System.out.println("forex method | " + user.getUserId());
 	   //String currency_arr[] = {"USDCAD","USDINR","USDAUD"};
 	   ArrayList<String> currency_arr = iAccountService.getAllCurrencies();
-	   
+	   Account account = new Account();
+		account.setUser(user);
+		account.setAccountType("checking");
+		Account accountDetails = iAccountService.getAccountDetails(account);
 	   //request.setAttribute("databaseList", currency_arr);
 	   mav.addObject("databaseList",currency_arr);
+	   mav.addObject("balance",accountDetails.getCurrentBalance());
 	   return mav;
 	 }
 	 
@@ -100,6 +104,7 @@ public class AccountController {
 	   if(test_from_currency > account.getCurrentBalance()) {
 		   System.out.println("Insufficient account balance");
 		   mav = new ModelAndView("forex_error");
+		   mav.addObject("message","Error: Insufficient account balance current: "+account.getCurrentBalance()+" USD, required: "+test_from_currency+" USD");
 	   }
 	   else {
 		   //double amount = account.getCurrentBalance() - test_from_currency;
