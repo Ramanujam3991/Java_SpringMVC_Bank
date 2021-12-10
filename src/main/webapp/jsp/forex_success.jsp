@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +24,7 @@
 </head>
 <body>
 	
-	<h1>Please collect your money at the nearest branch</h1>
-	<h1>{forex_amount.forex_amount}</h1>
+	<h1>Please collect your money at the nearest branch ${converted_amount }</h1>
+	
 </body>
 </html>

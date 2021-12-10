@@ -52,7 +52,7 @@ public class LoginController {
     User user = iUserService.validateUser(login);
 
     if (null != user) {
-      mav = new ModelAndView("redirect:/accountDetails/checking");
+      mav = new ModelAndView("redirect:/Dashboard");
       session = request.getSession();
       session.setAttribute("userObject", user);
       session.setAttribute("fullname", user.getFirstname()+" "+user.getLastname());

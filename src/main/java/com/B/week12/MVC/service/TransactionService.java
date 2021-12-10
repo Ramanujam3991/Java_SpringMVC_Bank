@@ -54,4 +54,18 @@ public class TransactionService implements ITransactionService{
 		// TODO Auto-generated method stub
 		iTransactionDao.withdrawMoney(transaction);
 	}
+
+
+	@Override
+	public boolean checkAccountExists(int accountId) {
+		// TODO Auto-generated method stub
+		return iTransactionDao.checkAccountExists(accountId);
+	}
+
+
+	@Override
+	public void transferMoney(Transaction transaction) {
+		// TODO Auto-generated method stub
+		iTransactionDao.transferMoney(transaction);
+	}
 }

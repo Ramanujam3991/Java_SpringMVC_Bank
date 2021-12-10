@@ -35,7 +35,7 @@
 			<tr></tr>
 			<tr>
 				<td></td>
-				<td><a href="register">New User?</a></td>
+				<td><a href="register">Create new Account?</a></td>
 			</tr>
 		</table>
 	</form:form>

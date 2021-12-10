@@ -1,5 +1,6 @@
 package com.B.week12.MVC.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.function.Function;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,11 +72,16 @@ public class AccountController {
 		if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
 	   User user = (User) session.getAttribute("userObject");
 	   System.out.println("forex method | " + user.getUserId());
+	   //String currency_arr[] = {"USDCAD","USDINR","USDAUD"};
+	   ArrayList<String> currency_arr = iAccountService.getAllCurrencies();
+	   
+	   //request.setAttribute("databaseList", currency_arr);
+	   mav.addObject("databaseList",currency_arr);
 	   return mav;
 	 }
 	 
 	 @RequestMapping(value = "/forexProcess", method = RequestMethod.POST)
-	 public ModelAndView forexForm(HttpSession session,HttpServletRequest request, HttpServletResponse response) {   
+	 public ModelAndView forexForm(HttpSession session,HttpServletRequest request, HttpServletResponse response,@ModelAttribute("account") Account accounts) {   
 	   ISpringSessionValidator validateSession = springSession -> (User) springSession.getAttribute("userObject") != null ? true : false;
 	   if(!validateSession.IS_SESSION_VALID(session)) return new ModelAndView("redirect:/login");
 	   ModelAndView mav = null;
@@ -86,7 +93,7 @@ public class AccountController {
 	   System.out.println(request.getParameter("from_currency"));
 	   System.out.println(request.getParameter("to_currency"));
 	   double test_from_currency = Double.parseDouble(request.getParameter("from_currency"));
-	   String to_currency = request.getParameter("to_currency");
+	   String to_currency = "USD"+request.getParameter("to_currency");
 	   System.out.println("to currency is | "+to_currency);
 	   double forex_amount=0;
 	   
@@ -97,11 +104,13 @@ public class AccountController {
 	   else {
 		   //double amount = account.getCurrentBalance() - test_from_currency;
 		   //double account_balance = account.getCurrentBalance();
-		   iAccountService.processForexTransaction(account,test_from_currency,to_currency);
+		   double converted_amount = iAccountService.processForexTransaction(account,test_from_currency,to_currency);
 		   iTransactionService.forexTransaction(account,test_from_currency);
 		   System.out.println(test_from_currency);
 		   mav = new ModelAndView("forex_success");
 		   mav.addObject("forex_amount", forex_amount);
+		   //String converted_amount =  String.valueOf(iAccountService.getConvertedAmount(account,test_from_currency,to_currency));
+		   mav.addObject("converted_amount", converted_amount+" "+request.getParameter("to_currency"));
 	   }   
 	   return mav;
 	 }

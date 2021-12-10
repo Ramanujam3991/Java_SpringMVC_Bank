@@ -28,6 +28,7 @@ public class TransationDao implements ITransationDao {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
+	
 	public int forexTransaction(Account account, double amount) {
 		// TODO Auto-generated method stub
 		System.out.println("I am inside forexTransaction of TransationDao class ");
@@ -111,6 +112,33 @@ public class TransationDao implements ITransationDao {
 		} else {
 			LOGGER.info("Transaction failed");
 		}
+		
+	}
+
+	@Override
+	public boolean checkAccountExists(int accountId) {
+		// TODO Auto-generated method stub
+		String sql = "select count(account_id) from account where account_id=?";
+		System.out.println("SQL:" + sql);
+		int cnt =  jdbcTemplate.queryForObject(sql,  new Object[]{accountId}, Integer.class );
+		return cnt > 0;
+	}
+
+	@Override
+	public void transferMoney(Transaction transaction) {
+		String sql = "update account set current_balance = (current_balance-?) where account_id=? ";
+		int status = jdbcTemplate.update(sql, new Object[] {transaction.getTransactionAmount(), transaction.getFromAccount().getAccountId()});
+		
+		if (status != 0) {
+			LOGGER.info("Withdraw success");
+		} else {
+			LOGGER.info("Withdraw failed");
+		}
+		
+		sql = "insert into transaction(account_id,to_account_id transaction_type, transaction_amount, comments, transaction_date) value(?,?,'transfered', ?, ? +"+" | transfered to "+transaction.getToAccount().getAccountId()+", SYSDATE())";
+		jdbcTemplate.update(sql, new Object[] {transaction.getFromAccount().getAccountId(),transaction.getToAccount().getAccountId(), transaction.getTransactionAmount(), transaction.getComments()});
+		sql = "insert into transaction(account_id transaction_type, transaction_amount, comments, transaction_date) value(?,?,'credited', ?, ?+"+" | credited from "+transaction.getFromAccount().getAccountId()+", SYSDATE())";
+		jdbcTemplate.update(sql, new Object[] {transaction.getToAccount().getAccountId(), transaction.getTransactionAmount(), transaction.getComments()});
 		
 	}
 	

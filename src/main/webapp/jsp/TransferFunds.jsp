@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="header.jsp" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
@@ -21,29 +19,20 @@
 	integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
 	crossorigin="anonymous"></script>
 <meta charset="ISO-8859-1">
-<title>Book</title>
+<title>Lambton Bank</title>
 </head>
 <body>
 	<div align="center"></div>
-	<h1>Forex transaction</h1>
+	<h1>Transfer Funds</h1>
 	<form action="forexProcess" method="post">
 		<table style="with: 80%">
 			<tr>
-				<td>From:</td>
-				<td><input type="text" placeholder="USD" class="form-control" name="from_currency" /></td>
+				<td>Receiving Account ID:</td>
+				<td><input type="text" class="form-control" name="accout2_id" /></td>
 			</tr>
 			<tr>
-				<td>To:</td>
-				<td>
-				<select class="form-control" name="to_currency">
-  <c:forEach items="${databaseList}" var="databaseValue">
-    <option value="${databaseValue}">
-        ${databaseValue}
-    </option>
-  </c:forEach>
-</select>
-				
-				</td>
+				<td>Amount:</td>
+				<td><input type="text" class="form-control" name="amount" /></td>
 			</tr>			
 		</table>
 		<input type="submit" name="action" value="Confirm" class="form-control btn btn-success btn-sm" ><br>

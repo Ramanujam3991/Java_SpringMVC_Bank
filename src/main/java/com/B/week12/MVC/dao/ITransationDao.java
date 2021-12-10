@@ -15,6 +15,10 @@ List<Account> getAccounts(int userId);
 void depositMoney(Transaction transaction);
 
 void withdrawMoney(Transaction transaction);
+
+boolean checkAccountExists(int accountId);
+
+void transferMoney(Transaction transaction);
 	
 
 }

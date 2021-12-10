@@ -40,8 +40,12 @@
  
   <bean id="iAccountService" class="com.B.week12.MVC.service.AccountService" />    
  <bean id="iAccountDao" class="com.B.week12.MVC.dao.AccountDao" />
- <bean id="iForexService" class="com.B.week12.MVC.service.TransactionService" />
+ 
+ <bean id="iTransactionService" class="com.B.week12.MVC.service.TransactionService" />
   <bean id="iTransactionDao" class="com.B.week12.MVC.dao.TransationDao" />
+  
+ <bean id="iDashboardService" class="com.B.week12.MVC.service.DashboardService" />
+  <bean id="iDashboardDao" class="com.B.week12.MVC.dao.DashboardDao" />
 <!--  
 <bean id="constants" class="com.B.week12.MVC.model.Constants"/> -->
 

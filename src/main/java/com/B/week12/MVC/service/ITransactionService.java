@@ -13,6 +13,10 @@ public interface ITransactionService {
 	public void depositMoney(Transaction transaction);
 	public void withdrawMoney(Transaction transaction);
 
+	public boolean checkAccountExists(int accountId);
+
+	public void transferMoney(Transaction transaction);
+
 }
 
 

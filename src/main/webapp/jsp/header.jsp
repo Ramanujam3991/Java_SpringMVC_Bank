@@ -11,10 +11,10 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Dashboard</a>
+        <a class="nav-link" href="/LambtonBank/Dashboard">Dashboard</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fund Transfer</a>
+        <a class="nav-link" href="/LambtonBank/transferMoney">Fund Transfer</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="#">Pay Bills</a>
@@ -28,7 +28,9 @@
       <li class="nav-item">
         <a class="nav-link" href="/LambtonBank/forex">Forex Transactions</a>
       </li>
-     
+       <li class="nav-item">
+        <a class="nav-link" href="/LambtonBank/addAccount">Add Account</a>
+      </li>
      
       
     </ul>

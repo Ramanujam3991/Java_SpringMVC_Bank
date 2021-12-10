@@ -18,45 +18,11 @@
 	<div class="container">
 		<h1 align="center">Create a new Account</h1>
 	</div>
-	<form:form id="regForm" modelAttribute="account" action="registerProcess"
+	<form:form id="regForm" modelAttribute="account" action="accountRegisterProcess"
 		method="post">
 
 		<table align="center">
-			<tr>
-				<td><form:label path="user.username">Username</form:label></td>
-				<td><form:input class="form-control" path="user.username"
-						name="user.username" id="username" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.password">Password</form:label></td>
-				<td><form:password class="form-control" path="user.password"
-						name="user.password" id="password" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.firstname">FirstName</form:label></td>
-				<td><form:input class="form-control" path="user.firstname"
-						name="user.firstname" id="firstname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.lastname">LastName</form:label></td>
-				<td><form:input class="form-control" path="user.lastname"
-						name="user.lastname" id="lastname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.email">Email</form:label></td>
-				<td><form:input class="form-control" path="user.email"
-						name="user.email" id="email" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.address">Address</form:label></td>
-				<td><form:input class="form-control" path="user.address"
-						name="user.address" id="address" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="user.phone">Phone</form:label></td>
-				<td><form:input class="form-control" path="user.phone"
-						maxlength="10" type="number" name="user.phone" id="phone" /></td>
-			</tr>
+			
 			<tr>
 				<td><form:label path="accountType">Account Type</form:label></td>
 				<td><form:select class="form-control" path="accountType"
