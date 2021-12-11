@@ -26,9 +26,9 @@
     
 <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">    
 <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property>    
-<property name="url" value="jdbc:mysql://localhost:3306/week12"></property>    
-<property name="username" value="root"></property>    
-<property name="password" value="root"></property>    
+<property name="url" value="jdbc:mysql://mysqldatabaseproject.ct564gv7e7ua.us-east-2.rds.amazonaws.com:3306/week12"></property>    
+<property name="username" value="admin"></property>    
+<property name="password" value="adminadmin"></property>    
 </bean>    
     
 <bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">    
