@@ -24,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.B.week12.MVC.dao.ITransationDao;
 import com.B.week12.MVC.model.Account;
 import com.B.week12.MVC.model.Transaction;
+import com.B.week12.MVC.model.User;
 
 public class TransactionService implements ITransactionService{
 	
@@ -67,5 +68,26 @@ public class TransactionService implements ITransactionService{
 	public void transferMoney(Transaction transaction) {
 		// TODO Auto-generated method stub
 		iTransactionDao.transferMoney(transaction);
+	}
+
+
+	@Override
+	public User validateUsername(String username) {
+		// TODO Auto-generated method stub
+		return iTransactionDao.validateUsername(username);
+	}
+
+
+	@Override
+	public void registerBiller(User user, User billerUser) {
+		// TODO Auto-generated method stub
+		iTransactionDao.registerBiller(user,billerUser);
+	}
+
+
+	@Override
+	public List<Account> getPayeeLst(int userId) {
+		// TODO Auto-generated method stub
+		return iTransactionDao.getPayeeLst(userId);
 	}
 }

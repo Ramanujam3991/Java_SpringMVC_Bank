@@ -589,3 +589,39 @@
 [http-nio-8089-exec-10] INFO  com.B.week12.MVC.controller.TransactionController  - transaction:::::Transaction [transactionId=0, fromAccount=Account [accountId=1234567, accountStatus=null, accountType=null, currentBalance=0.0, user=null], toAccount=null, transactionType=null, transactionAmount=1000.0, comments=money deposited, transactionDate=null]
 [http-nio-8089-exec-10] INFO  com.B.week12.MVC.dao.TransationDao  - Deposit success
 [http-nio-8089-exec-10] INFO  com.B.week12.MVC.dao.TransationDao  - Transaction success
+[http-nio-8089-exec-4] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-7] INFO  com.B.week12.MVC.controller.LoginController  - Session stopped
+[http-nio-8089-exec-2] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-5] INFO  com.B.week12.MVC.controller.LoginController  - Session stopped
+[http-nio-8089-exec-13] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Thirumeninathan
+[http-nio-8089-exec-16] INFO  com.B.week12.MVC.controller.AccountController  - Fetching Account Details in account controller and viewing:checking
+[http-nio-8089-exec-16] INFO  com.B.week12.MVC.controller.AccountController  - account:Account [accountId=0, accountStatus=null, accountType=checking, currentBalance=0.0, user=User [username=thirumeninathan, password=thiru, firstname=Thirumeninathan, lastname=Na, email=thirumeni06@gmail.com, address=111 down, phone=1111111111]]
+[http-nio-8089-exec-16] INFO  com.B.week12.MVC.controller.AccountController  - transaction:null
+[http-nio-8089-exec-17] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1234569, accountStatus=active, accountType=checking, currentBalance=0.0, user=null]
+[http-nio-8089-exec-18] INFO  com.B.week12.MVC.controller.TransactionController  - transaction:::::Transaction [transactionId=0, fromAccount=Account [accountId=1234569, accountStatus=null, accountType=null, currentBalance=0.0, user=null], toAccount=null, transactionType=null, transactionAmount=2000.0, comments=money deposited for becoming red coder in cf and tc and cc, transactionDate=null]
+[http-nio-8089-exec-18] INFO  com.B.week12.MVC.dao.TransationDao  - Deposit success
+[http-nio-8089-exec-18] INFO  com.B.week12.MVC.dao.TransationDao  - Transaction success
+[http-nio-8089-exec-12] INFO  com.B.week12.MVC.controller.AccountController  - Fetching Account Details in account controller and viewing:checking
+[http-nio-8089-exec-12] INFO  com.B.week12.MVC.controller.AccountController  - account:Account [accountId=0, accountStatus=null, accountType=checking, currentBalance=0.0, user=User [username=thirumeninathan, password=thiru, firstname=Thirumeninathan, lastname=Na, email=thirumeni06@gmail.com, address=111 down, phone=1111111111]]
+[http-nio-8089-exec-12] INFO  com.B.week12.MVC.controller.AccountController  - transaction:[Transaction [transactionId=25, fromAccount=Account [accountId=1234569, accountStatus=null, accountType=null, currentBalance=0.0, user=null], toAccount=Account [accountId=0, accountStatus=null, accountType=null, currentBalance=0.0, user=null], transactionType=deposit, transactionAmount=2000.0, comments=money deposited for becoming red coder in cf and tc and cc, transactionDate=2021-12-11]]
+[http-nio-8089-exec-10] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1234569, accountStatus=active, accountType=checking, currentBalance=0.0, user=null]
+[http-nio-8089-exec-17] INFO  com.B.week12.MVC.controller.LoginController  - Session stopped
+[http-nio-8089-exec-18] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-11] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-21] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-23] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-7] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-1] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-4] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-8] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-4] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-6] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-2] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-1] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-3] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-4] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-6] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-10] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-4] INFO  com.B.week12.MVC.controller.LoginController  - Loggin Successfull, session started for Ramanujam
+[http-nio-8089-exec-8] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]
+[http-nio-8089-exec-2] INFO  com.B.week12.MVC.controller.TransactionController  - accountLst:::::Account [accountId=1, accountStatus=active, accountType=saving, currentBalance=1261.0, user=null]

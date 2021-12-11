@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.B.week12.MVC.model.Account;
 import com.B.week12.MVC.model.Transaction;
+import com.B.week12.MVC.model.User;
 
 public interface ITransactionService {
 	public int forexTransaction(Account account, double amount);
@@ -16,6 +17,12 @@ public interface ITransactionService {
 	public boolean checkAccountExists(int accountId);
 
 	public void transferMoney(Transaction transaction);
+
+	public User validateUsername(String username);
+
+	public void registerBiller(User user, User billerUser);
+
+	public List<Account> getPayeeLst(int userId);
 
 }
 

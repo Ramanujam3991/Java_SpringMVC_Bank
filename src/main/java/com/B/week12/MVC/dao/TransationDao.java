@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.RowMapper;
 
 import com.B.week12.MVC.model.Account;
 import com.B.week12.MVC.model.Transaction;
+import com.B.week12.MVC.model.User;
 
 public class TransationDao implements ITransationDao {
 	private static final Logger LOGGER = Logger.getLogger(TransationDao.class);
@@ -146,4 +147,45 @@ public class TransationDao implements ITransationDao {
 
 	}
 
+	@Override
+	public User validateUsername(String username) {
+
+		String sql = "select * from user where user_name='" +username+"'" ;
+		System.out.println("SQL:" + sql);
+		List<User> users = jdbcTemplate.query(sql, new UserMapper());
+
+		return users.size() > 0 ? users.get(0) : null;
+	}
+
+	@Override
+	public void registerBiller(User user, User billerUser) {
+		// TODO Auto-generated method stub
+		String sql = "insert into my_bills(from_user_id, to_user_id) value(?,?)";
+		int status = jdbcTemplate.update(sql, new Object[] {user.getUserId(),billerUser.getUserId() });
+		
+	}
+
+	@Override
+	public List<Account> getPayeeLst(int userId) {
+		String sql = "select * from account where user_id in (select to_user_id from my_bills where from_user_id=" + userId+ ")";
+		System.out.println("SQL:" + sql);
+		List<Account> accountLst = jdbcTemplate.query(sql, new AccountUserMapper1());
+
+		return accountLst.size() > 0 ? accountLst : null;
+	}
+	class AccountUserMapper1 implements RowMapper<Account> {
+
+		public Account mapRow(ResultSet rs, int arg1) throws SQLException {
+			Account account = new Account();
+			account.setAccountId(rs.getInt("account_id"));
+			account.setAccountStatus(rs.getString("account_status"));
+			account.setAccountType(rs.getString("account_Type"));
+			account.setCurrentBalance(rs.getDouble("current_balance"));
+			String sql = "select * from user where user_id='" + rs.getInt("user_Id") + "'";
+			List<User> user = jdbcTemplate.query(sql, new UserMapper());
+			account.setUser(user.get(0));
+			return account;
+
+		}
+	}
 }

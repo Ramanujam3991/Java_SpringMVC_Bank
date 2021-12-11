@@ -17,7 +17,7 @@
         <a class="nav-link" href="/LambtonBank/transferMoney">Fund Transfer</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="#">Pay Bills</a>
+        <a class="nav-link" href="/LambtonBank/payBills">Pay Bills</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/LambtonBank/depositMoney">Deposit</a>

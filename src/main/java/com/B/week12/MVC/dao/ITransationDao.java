@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.B.week12.MVC.model.Account;
 import com.B.week12.MVC.model.Transaction;
+import com.B.week12.MVC.model.User;
 
 public interface ITransationDao {
 
@@ -19,6 +20,12 @@ void withdrawMoney(Transaction transaction);
 boolean checkAccountExists(int accountId);
 
 void transferMoney(Transaction transaction);
+
+User validateUsername(String username);
+
+void registerBiller(User user, User billerUser);
+
+List<Account> getPayeeLst(int userId);
 	
 
 }
